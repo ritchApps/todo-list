@@ -43,6 +43,10 @@
 	margin-right: 10px;
 }
 
+.hiden{
+	display: none;
+}
+
 ul{
 	list-style: none;
 	
