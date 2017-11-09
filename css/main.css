@@ -1,0 +1,71 @@
+.container{
+	width: 100%;
+}
+
+.row{
+	padding: 10px;
+}
+
+.crossed{
+	text-decoration: line-through;
+}
+
+.listItem{
+	line-height: 1.5em;
+	font-size: 1em;
+}
+
+[class*="btn-"]{
+	border-radius: 5px;
+	line-height: 1em;
+}
+
+.btn-add{
+	background: blue;
+	background: -webkit-linear-gradient(-180deg, #4C59D8, #717BD8);
+	background: -o-linear-gradient(-180deg, #4C59D8, #717BD8);
+	background: -moz-linear-gradient(-180deg, #4C59D8, #717BD8);
+	background: linear-gradient(-180deg, #4C59D8, #717BD8);	
+	color: white;
+}
+
+.btn-delete{
+	background: red;
+	background: -webkit-linear-gradient(-180deg, rgba(255,0,0,255), rgba(200,0,0,255));
+	background: -o-linear-gradient(-180deg,rgba(255,0,0,255), rgba(200,0,0,255));
+	background: -moz-linear-gradient(-180deg,rgba(255,0,0,255), rgba(200,0,0,255));
+	background: linear-gradient(-180deg,rgba(255,0,0,255), rgba(200,0,0,255));	
+	color: white;
+}
+
+.task-control{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+ul{
+	list-style: none;
+	
+}
+
+li .btn-delete{
+	display: none;
+}
+
+li:hover{
+	background-color: #081272;
+	cursor: pointer;
+	color:white;
+}
+li:hover .btn-delete{	
+	display: inline-block;
+	margin-left: 15px;
+}
+
+.controls{
+	display: inline-flex;
+}
+
+.task-control{
+	border-radius: 5px;	
+}
