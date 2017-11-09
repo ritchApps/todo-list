@@ -1,41 +1,108 @@
+*{
+	box-sizing: border-box;
+}
+
+ul{
+	list-style-type: none;
+	padding:0;
+}
+
+
+body{
+	background: #FFEF70;
+}
+
 .container{
 	width: 100%;
+	padding: 22px;
 }
 
-.row{
-	padding: 10px;
+.controls{
+	width: 100%;	
+	padding: 5px;
+	border-radius: 5px;
 }
 
+.controls .text-control{
+	width: 100%;
+	line-height: 30px;
+	height: 50px;
+	padding-left: 10px;
+	border: solid 3px #FFFFFF;  
+	background-color: #BFB354;
+	color: #FFFFFF;
+	border-radius: 10px;
+}
+
+input::placeholder {
+  color: #FFFFFF;
+}
 .crossed{
 	text-decoration: line-through;
 }
 
 .listItem{
-	line-height: 1.5em;
-	font-size: 1em;
+	line-height: 50px;
+	font-size: 20px;
+	margin-bottom: 5px;
+	border: dashed 2px #A69515;
+}
+
+
+.listItem:hover{	
+	cursor: pointer;	
+}
+
+.listItem:hover .btn-delete{	
+	display: inline-block;
+	margin-left: 15px;
 }
 
 [class*="btn-"]{
 	border-radius: 5px;
-	line-height: 1em;
+	line-height: 20px;
+	height: 22px;
 }
 
 .btn-add{
-	background: blue;
+	display: none;
+	background: #4C59D8;
 	background: -webkit-linear-gradient(-180deg, #4C59D8, #717BD8);
 	background: -o-linear-gradient(-180deg, #4C59D8, #717BD8);
 	background: -moz-linear-gradient(-180deg, #4C59D8, #717BD8);
 	background: linear-gradient(-180deg, #4C59D8, #717BD8);	
+	line-height: 44px;
+	height: 47px;
+	width: 160px;
 	color: white;
 }
 
+.btn-add:hover{
+	background: #4C59D8;
+	background: -webkit-linear-gradient(-180deg, #717BD8, #4C59D8);
+	background: -o-linear-gradient(-180deg, #717BD8, #4C59D8);
+	background: -moz-linear-gradient(-180deg, #717BD8, #4C59D8);
+	background: linear-gradient(-180deg, #717BD8, #4C59D8);	
+}
+
+.btn-add::before{
+	content: '\f055';
+	font-family: FontAwesome;
+	font-size: 20px;
+	padding-left: 7px;
+	position: absolute;
+	display: block;	
+	color: #FFF;		
+}
+
 .btn-delete{
-	background: red;
-	background: -webkit-linear-gradient(-180deg, rgba(255,0,0,255), rgba(200,0,0,255));
-	background: -o-linear-gradient(-180deg,rgba(255,0,0,255), rgba(200,0,0,255));
-	background: -moz-linear-gradient(-180deg,rgba(255,0,0,255), rgba(200,0,0,255));
-	background: linear-gradient(-180deg,rgba(255,0,0,255), rgba(200,0,0,255));	
+	background: #FF0000;
+	background: -webkit-linear-gradient(-180deg, #FF0000, #A60000);
+	background: -o-linear-gradient(-180deg, #FF0000, #A60000);
+	background: -moz-linear-gradient(-180deg, #FF0000, #A60000);
+	background: linear-gradient(-180deg, #FF0000, #A60000);	
 	color: white;
+	display: none;
 }
 
 .task-control{
@@ -43,33 +110,42 @@
 	margin-right: 10px;
 }
 
-.hiden{
+.hidden{
 	display: none;
 }
 
-ul{
-	list-style: none;
+@media only screen and (max-width: 768px){
 	
-}
+	[class*="btn-"]{
+		display: inline-block;		
+	}
 
-li .btn-delete{
-	display: none;
-}
+	.controls{
+		display: inline-flex;
+	}
 
-li:hover{
-	background-color: #081272;
-	cursor: pointer;
-	color:white;
-}
-li:hover .btn-delete{	
-	display: inline-block;
-	margin-left: 15px;
-}
+	.controls .text-control{		
+		line-height: 30px;
+		padding-left: 10px;
+	}
+	
+	.list{
+		overflow-y: auto;		
+		max-height: 500px;
+	}
 
-.controls{
-	display: inline-flex;
-}
+	.list::-webkit-scrollbar { 
+    	display: none; 
+	}
 
-.task-control{
-	border-radius: 5px;	
+
+	.listItem .btn-delete{
+		display: inline-block;	
+		float: right;
+		width: 30px;
+		height: 30px;	
+		top:5px;
+	}	
+
+
 }

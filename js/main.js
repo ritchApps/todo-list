@@ -43,15 +43,21 @@ function createListItem(i){
   }
  
   var elements = [checkbox, span, button];
-  return createElement("li", {"id": i}, elements)
+  return createElement("li", {"id": i, "class": "listItem"}, elements)
 }
 
-function createControls(){
-  var label = createElement("label",{"for": "task"}, "Task: ");
-  var inputTask = createElement("input", {"type": "text", "class": "text-control", "id": "task"});
-  var addButton = createElement("button", {"type": "button", "class": "btn-add", "onclick":"add()"}, "+ Add");
-  var hr = createElement("hr");
-  var controls = createElement("div",{},[label, inputTask, addButton, hr]);
+function createControls(){  
+  var inputTask = createElement("input", {"type": "text", "class": "text-control", "id": "task", "placeholder" : "Add a task.."});
+  inputTask.onkeypress = function(e){    
+    if(!e) e. window.event;
+    var keyCode = e.keyCode || e.which;
+    if(keyCode == '13'){
+      add();
+    }
+  }
+  var addButton = createElement("button", {"type": "button", "class": "btn-add", "onclick":"add()"}, "Add");
+  
+  var controls = createElement("div",{"class": "controls"},[inputTask, addButton]);
   var container = getContainer();
   container.appendChild(controls);
   
@@ -66,19 +72,19 @@ function createList(){
 }
 
 function hideList(){
-  document.getElementById("list-container").setAttribute("class", "hiden");
+  document.getElementById("list-container").setAttribute("class", "hidden");
 }
 
 function showList(){
   var listContainer = document.getElementById("list-container");
-  listContainer.setAttribute("class", listContainer.getAttribute("class").replace(/hiden/, ""));
+  listContainer.setAttribute("class", listContainer.getAttribute("class").replace(/hidden/, ""));
 }
 
 
 function cross(item){
   var text = document.getElementById(item).querySelector("span");
   var check  = document.getElementById(item).querySelector("input[type=checkbox]");  
-  check.checked? text.setAttribute("class", text.getAttribute("class") + " crossed") : text.setAttribute('class', text.getAttribute('class').replace(/crossed/, '').trim());  
+  check.checked? text.setAttribute("class", " crossed") : text.setAttribute('class', text.getAttribute('class').replace(/crossed/, '').trim());  
   var taskList =  JSON.parse(localStorage.getItem("tasksList"));
   taskList[item].checked = check.checked;
   localStorage.setItem("tasksList", JSON.stringify(taskList));
@@ -106,7 +112,7 @@ function clearList(){
 function getContainer(){
   var container = document.getElementById("container"); 
   if(!container){
-    container = createElement("div", {"id":"container"});
+    container = createElement("div", {"id":"container", "class": "container"});
     var body = document.querySelector("body");
     body.appendChild(container);
   }
@@ -127,7 +133,7 @@ function getTasksElement(){
 
 function isListContainerHidden(){
   var listContainer = document.getElementById("list-container");
-  return listContainer && listContainer.getAttribute("class") && listContainer.getAttribute("class").indexOf("hiden") > -1;
+  return listContainer && listContainer.getAttribute("class") && listContainer.getAttribute("class").indexOf("hidden") > -1;
 }
 
 function add(){  
