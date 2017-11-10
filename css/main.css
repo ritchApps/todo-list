@@ -34,6 +34,11 @@ body{
 	border-radius: 10px;
 }
 
+.todo-header{
+	color: #A67E15;
+	text-shadow: 1px 1px #A69515;
+}
+
 input[id="task"]::placeholder {
   color: #FFFFFF;
 }

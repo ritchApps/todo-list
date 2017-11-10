@@ -66,7 +66,7 @@ function createControls(){
 }
 
 function createList(){  
-  var listTitle = createElement("h3", {}, "Todo:");
+  var listTitle = createElement("h3", {"class" : "todo-header"}, "To Do:");
   var list = createElement("ul", {"id": "tasks", "class": "list"});
   var div = createElement("div",{"id": "list-container"}, [listTitle, list]);    
   var container = getContainer();
