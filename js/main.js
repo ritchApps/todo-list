@@ -36,14 +36,16 @@ function createListItem(i){
   var checkbox = createElement("input", {"type": "checkbox", "onclick":"cross("+i+")"});
   var span = createElement("span", {}, node.name);
   var button = createElement("button", {"type": "button", "class": "btn-delete" ,"onclick": "remove("+i+")"}, "X");
-
+  var listClass = "listItem";
   if(node.checked){
     checkbox.setAttribute("checked", "true");
     span.setAttribute("class", "crossed");
+    listClass += " listItemCrossed";
   }
  
+  
   var elements = [checkbox, span, button];
-  return createElement("li", {"id": i, "class": "listItem"}, elements)
+  return createElement("li", {"id": i, "class": listClass }, elements);
 }
 
 function createControls(){  
@@ -84,7 +86,14 @@ function showList(){
 function cross(item){
   var text = document.getElementById(item).querySelector("span");
   var check  = document.getElementById(item).querySelector("input[type=checkbox]");  
-  check.checked? text.setAttribute("class", " crossed") : text.setAttribute('class', text.getAttribute('class').replace(/crossed/, '').trim());  
+  var listItem = document.getElementById(item);
+  if(check.checked){
+    text.setAttribute("class", " crossed");  
+    listItem.setAttribute('class', listItem.getAttribute('class') + " listItemCrossed");
+  } else{    
+     text.setAttribute('class', text.getAttribute('class').replace(/crossed/, '').trim());     
+     listItem.setAttribute('class', listItem.getAttribute('class').replace(/listItemCrossed/, '').trim());
+  }
   var taskList =  JSON.parse(localStorage.getItem("tasksList"));
   taskList[item].checked = check.checked;
   localStorage.setItem("tasksList", JSON.stringify(taskList));

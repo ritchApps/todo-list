@@ -34,9 +34,10 @@ body{
 	border-radius: 10px;
 }
 
-input::placeholder {
+input[id="task"]::placeholder {
   color: #FFFFFF;
 }
+
 .crossed{
 	text-decoration: line-through;
 }
@@ -47,6 +48,10 @@ input::placeholder {
 	margin-bottom: 5px;
 	border: dashed 2px #A69515;
 	border-radius: 10px;
+}
+
+.listItemCrossed{
+	background-color: #BFB354;
 }
 
 
