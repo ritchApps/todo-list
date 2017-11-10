@@ -46,11 +46,13 @@ input::placeholder {
 	font-size: 20px;
 	margin-bottom: 5px;
 	border: dashed 2px #A69515;
+	border-radius: 10px;
 }
 
 
 .listItem:hover{	
-	cursor: pointer;	
+	cursor: pointer;
+	background: #FFCB40;	
 }
 
 .listItem:hover .btn-delete{	
